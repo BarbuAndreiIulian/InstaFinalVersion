@@ -7,8 +7,10 @@ import comment from "../assets/comment.png";
 import message from "../assets/message.png";
 import dots from "../assets/dots.png";
 import save from "../assets/save.png";
+import { useSession } from "next-auth/react";
 
 const Post = () => {
+  const { data: session } = useSession();
   return (
     <div>
       <div className="border rounded-t-lg rounded-b-lg mb-4">
@@ -16,12 +18,16 @@ const Post = () => {
         <div className="flex justify-between items-center p-3">
           <div className="flex  items-center">
             <div className=" h-8 w-8 mr-3">
-              <Image src={profile} alt="ProfileImg" className="rounded-full" />
+              <img
+                src={session?.user?.image}
+                alt="ProfileImg"
+                className="rounded-full"
+              />
             </div>
 
             <div className="">
               <p className="font-semibold text-sm leading-[18px]">
-                andrei_barbu
+                {session?.user?.name}
               </p>
               <p className=" text-xs ">Original Audio</p>
             </div>

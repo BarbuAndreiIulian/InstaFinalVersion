@@ -3,11 +3,13 @@ import Image from "next/image";
 import Feed from "../components/Feed";
 import Header from "../components/Header";
 import styles from "../styles/Home.module.css";
+import Modal from "../components/Modal";
 
 export default function Home() {
   return (
     <div className="">
       {/* Modal */}
+      <Modal />
 
       <Head>
         <title>Create Next App</title>

@@ -8,8 +8,14 @@ import hearth from "../assets/hearth.png";
 import search from "../assets/search.png";
 import arrowdown from "../assets/arrowdown.png";
 import instagram from "../assets/instagram.png";
+import { useSession } from "next-auth/react";
+import { useRecoilState, atom } from "recoil";
+import { modalState } from "../atoms/ModalAtom";
 
 const Header = () => {
+  const { data: session } = useSession();
+  const [modal, setModal] = useRecoilState(modalState);
+
   return (
     <div className="shadow-sm border-b  ">
       <div className="flex justify-between h-[59px] max-w-[61rem]  m-auto">
@@ -53,7 +59,7 @@ const Header = () => {
             </div>
           </div>
 
-          <div className="navBtn">
+          <div onClick={() => setModal(!modal)} className="navBtn">
             <Image src={upload} />
           </div>
 
@@ -67,7 +73,7 @@ const Header = () => {
 
           <div className="shrink-0">
             <img
-              src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1780&q=80"
+              src={session?.user?.image}
               alt="Sign Out"
               className="h-6 rounded-full cursor-pointer"
             />
