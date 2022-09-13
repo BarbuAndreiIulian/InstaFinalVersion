@@ -1,3 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .navBtn {
+    @apply w-6 h-6 shrink-0 cursor-pointer;
+  }
+  .postBtn {
+    @apply w-6 h-6 shrink-0 cursor-pointer;
+  }
+
+  .fontComments {
+    @apply font-bold text-sm leading-[18px];
+  }
+}
+
 html,
 body {
   padding: 0;
