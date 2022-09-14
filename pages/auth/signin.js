@@ -7,24 +7,25 @@ export default function SignIn({ providers }) {
   return (
     <>
       {Object.values(providers).map((provider) => (
-        <div className="  ">
-          <Header />
-          <div
-            key={provider.name}
-            className="mt-20   flex flex-col justify-center items-center -pt-32"
-          >
-            <div className="w-80 mx-auto">
-              <Image src={instagram} alt="" />
-            </div>
-            <p className="mt-0 mb-40 ">
-              This is not a REAL app it is built for educational purpose only
-            </p>
+        <div
+          key={provider.name}
+          className="  mx-auto    flex flex-col justify-center items-center  "
+        >
+          <div className="w-screen">
+            <Header />
+          </div>
 
-            <div className="bg-[#0095f6] rounded-md   max-w-[11rem] flex justify-center p-3 mx-auto text-white">
-              <button onClick={() => signIn(provider.id, { callbackUrl: "/" })}>
-                Sign in with {provider.name}
-              </button>
-            </div>
+          <div className="w-80 mx-auto">
+            <Image src={instagram} alt="" />
+          </div>
+          <p className="mt-0 mb-40 ">
+            This is not a REAL app it is built for educational purpose only
+          </p>
+
+          <div className="bg-[#0095f6] rounded-md   max-w-[11rem] flex justify-center p-3 mx-auto text-white">
+            <button onClick={() => signIn(provider.id, { callbackUrl: "/" })}>
+              Sign in with {provider.name}
+            </button>
           </div>
         </div>
       ))}
