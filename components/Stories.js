@@ -15,7 +15,6 @@ const Stories = () => {
     );
   }, []);
 
-  console.log(stories);
   return (
     <div>
       <div className="flex space-x-4 p-5 bg-white  border border-gray-200 rounded-lg overflow-scroll scrollbar-thin scrollbar-thumb-black ">

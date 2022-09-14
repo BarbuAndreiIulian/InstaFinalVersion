@@ -8,20 +8,25 @@ import hearth from "../assets/hearth.png";
 import search from "../assets/search.png";
 import arrowdown from "../assets/arrowdown.png";
 import instagram from "../assets/instagram.png";
-import { useSession } from "next-auth/react";
+import { signOut, signIn, useSession } from "next-auth/react";
 import { useRecoilState, atom } from "recoil";
 import { modalState } from "../atoms/ModalAtom";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const { data: session } = useSession();
   const [modal, setModal] = useRecoilState(modalState);
+  const router = useRouter();
 
   return (
     <div className="shadow-sm border-b  ">
       <div className="flex justify-between h-[59px] max-w-[61rem]  m-auto">
         {/* Left */}
         <div className="flex mt-1 ml-4 flex-[1_0_127px] pr-2">
-          <div className="flex items-center cursor-pointer ">
+          <div
+            className="flex items-center cursor-pointer "
+            onClick={() => router.push("/")}
+          >
             <Image src={instagram} height={38} width={110} />
           </div>
           <div className="flex items-center -mt-1 pl-1">
@@ -44,8 +49,8 @@ const Header = () => {
         </div>
 
         {/* Right */}
-        <div className="flex items-center space-x-[1.36rem] flex-[1_0_127px] justify-end pl-12 mr-6 w-full">
-          <div className="navBtn">
+        <div className="flex items-center space-x-[1.36rem] flex-[1_0_127px] justify-end pl-12 mr-6 w-full ">
+          <div className="navBtn" onClick={() => router.push("/")}>
             <Image src={home} />
           </div>
 
@@ -59,7 +64,10 @@ const Header = () => {
             </div>
           </div>
 
-          <div onClick={() => setModal(!modal)} className="navBtn">
+          <div
+            onClick={session ? () => setModal(!modal) : signIn}
+            className="navBtn"
+          >
             <Image src={upload} />
           </div>
 
@@ -72,11 +80,18 @@ const Header = () => {
           </div>
 
           <div className="shrink-0">
-            <img
-              src={session?.user?.image}
-              alt="Sign Out"
-              className="h-6 rounded-full cursor-pointer"
-            />
+            {session ? (
+              <img
+                src={session?.user?.image}
+                alt="ProfilePicture"
+                className="h-6 rounded-full cursor-pointer"
+                onClick={signOut}
+              />
+            ) : (
+              <p onClick={signIn} className="cursor-pointer">
+                Sign In
+              </p>
+            )}
           </div>
         </div>
       </div>

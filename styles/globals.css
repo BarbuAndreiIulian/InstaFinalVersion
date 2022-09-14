@@ -13,6 +13,9 @@
   .fontComments {
     @apply font-bold text-sm leading-[18px];
   }
+  .infoBtn {
+    @apply hover:underline cursor-pointer;
+  }
 }
 
 html,

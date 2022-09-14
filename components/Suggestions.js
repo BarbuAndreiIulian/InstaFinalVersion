@@ -14,7 +14,6 @@ const Suggestions = () => {
     );
   }, []);
 
-  console.log(suggestions);
   return (
     <div className="mt-3">
       <div className="flex justify-between items-center ">
@@ -49,26 +48,26 @@ const Suggestions = () => {
         </div>
       </div>
       <div className="">
-        <div className="flex items-center flex-wrap text-xs mt-6 text-semibold text-[#d2d2d2] space-x-1">
-          <p>About</p>
+        <div className="flex items-center flex-wrap text-xs mt-6 text-semibold text-[#d2d2d2] space-x-1 ">
+          <p className="hover:underline cursor-pointer ">About</p>
           <span className="">&#183;</span>
-          <p>Help</p>
+          <p className="infoBtn">Help</p>
           <span>&#183;</span>
-          <p>Press</p>
+          <p className="infoBtn">Press</p>
           <span>&#183;</span>
-          <p>API</p>
+          <p className="infoBtn">API</p>
           <span>&#183;</span>
-          <p>Jobs</p>
+          <p className="infoBtn">Jobs</p>
           <span>&#183;</span>
-          <p>Privacy</p>
+          <p className="infoBtn">Privacy</p>
           <span>&#183;</span>
-          <p>Terms</p>
+          <p className="infoBtn">Terms</p>
           <span>&#183;</span>
-          <p>Locations</p>
+          <p className="infoBtn">Locations</p>
           <span>&#183;</span>
-          <p className="pt-1">Language</p>
+          <p className="pt-1 hover:underline">Language</p>
         </div>
-        <p className="text-xs mt-6 text-semibold text-[#d2d2d2]">
+        <p className="text-xs mt-6 text-semibold text-[#d2d2d2]  ">
           © 2022 INSTAGRAM FROM META
         </p>
       </div>
